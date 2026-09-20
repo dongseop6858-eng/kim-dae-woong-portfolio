@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Skyedge 윈치 작동 영상</title>
+<style>body{background:#111;color:#fff;font-family:Arial,sans-serif;text-align:center;padding:30px;margin:0}main{max-width:1000px;margin:auto}video{display:block;width:min(900px,95vw);max-height:78vh;margin:20px auto;background:#000;object-fit:contain;border-radius:12px}a{color:#b9ddf5}.status{color:#bfc7d5;min-height:1.5em}</style>
+<main>
+<h2>Skyedge · 윈치 작동 영상</h2>
+<video id="v" controls autoplay muted playsinline preload="auto" poster="assets/skyedge_uam_web/posters/KakaoTalk_20260921_014731245.jpg">
+  <source src="assets/skyedge_uam_web/KakaoTalk_20260921_014731245.mp4" type="video/mp4">
+</video>
+<p id="status" class="status">영상 불러오는 중…</p><p>무음 영상</p>
+<p><a href="김대웅_3D_CAD_하드웨어_설계_포트폴리오_영상.html">← 포트폴리오로 돌아가기</a></p>
+</main>
+<script>
+const v=document.getElementById('v'), status=document.getElementById('status');
+const loadVideo=()=>{v.load(); v.play().catch(()=>{});};
+v.addEventListener('loadstart',()=>status.textContent='영상 불러오는 중…');
+v.addEventListener('canplay',()=>status.textContent='재생 준비 완료');
+v.addEventListener('error',()=>status.textContent='영상 로딩에 실패했습니다. 새로고침해 주세요.');
+window.addEventListener('pageshow',loadVideo);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden) loadVideo();});
+requestAnimationFrame(loadVideo);
+</script>
